@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>2015年总结 | Joey的前端坎坷路</title>
+  <title>Vue——vue-loader使用过程出现的babel-runtime相关问题 | Joey的前端坎坷路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么都没有并不是我懒，一切还没开始…先撸两盘先">
+  <meta name="description" content="事故的起因，是因为有着更新强迫症的博主，npm更新了vue-loader，然后就出现各种问题，抓狂~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2015年总结">
-<meta property="og:url" content="http://yoursite.com/2016/01/02/2015年总结/index.html">
+<meta property="og:title" content="Vue——vue-loader使用过程出现的babel-runtime相关问题">
+<meta property="og:url" content="http://yoursite.com/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/index.html">
 <meta property="og:site_name" content="Joey的前端坎坷路">
-<meta property="og:description" content="什么都没有并不是我懒，一切还没开始…先撸两盘先">
-<meta property="og:updated_time" content="2016-01-19T07:32:24.812Z">
+<meta property="og:description" content="事故的起因，是因为有着更新强迫症的博主，npm更新了vue-loader，然后就出现各种问题，抓狂~">
+<meta property="og:image" content="http://yoursite.com/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/baidu_result.png">
+<meta property="og:image" content="http://yoursite.com/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/google_result.png">
+<meta property="og:image" content="http://yoursite.com/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/hehebaidu.jpg">
+<meta property="og:updated_time" content="2016-01-22T05:59:14.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2015年总结">
-<meta name="twitter:description" content="什么都没有并不是我懒，一切还没开始…先撸两盘先">
+<meta name="twitter:title" content="Vue——vue-loader使用过程出现的babel-runtime相关问题">
+<meta name="twitter:description" content="事故的起因，是因为有着更新强迫症的博主，npm更新了vue-loader，然后就出现各种问题，抓狂~">
   
     <link rel="alternative" href="/atom.xml" title="Joey的前端坎坷路" type="application/atom+xml">
   
@@ -176,11 +179,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-2015年总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue——vue-loader使用过程出现的babel-runtime相关问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/02/2015年总结/" class="article-date">
-  	<time datetime="2016-01-02T13:50:20.000Z" itemprop="datePublished">2016-01-02</time>
+      <a href="/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/" class="article-date">
+  	<time datetime="2016-01-22T05:05:23.000Z" itemprop="datePublished">2016-01-22</time>
 </a>
     </div>
   
@@ -193,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2015年总结
+      Vue——vue-loader使用过程出现的babel-runtime相关问题
     </h1>
   
 
@@ -202,7 +205,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2015/">2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel-runtime/">babel-runtime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typeof出错/">typeof出错</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-loader/">vue-loader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
 	</div>
 
         
@@ -213,7 +216,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>什么都没有并不是我懒，一切还没开始…先撸两盘先</p>
+        <blockquote>
+<p>事故的起因，是因为有着更新强迫症的博主，npm更新了vue-loader，然后就出现各种问题，抓狂~</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<p>问题一：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! peerinvalid The package babel-runtime@<span class="number">6.3</span><span class="number">.19</span> <span class="keyword">does</span> <span class="keyword">not</span> satisfy <span class="keyword">its</span> siblings' peerDependencies requirements!</span><br><span class="line">npm ERR! peerinvalid Peer vue-loader@<span class="number">7.5</span><span class="number">.3</span> wants babel-runtime@^<span class="number">5.8</span><span class="number">.0</span></span><br></pre></td></tr></table></figure></p>
+<p>从错误提示可以看出，vue-loader依赖的babel-runtime的版本是5.8.0，而我安装的版本是6.3.19。<a href="#solution">解决方法</a><br>虽然是报错了，因为我看只是babel-runtime版本高，应该会兼容低版本吧，然后博主我若无其事的继续用着，还是真的可以，修改、编译、运行。一切照常进行…直到:</p>
+<hr>
+<p>问题二：<br><code>Uncaught TypeError: (0 , _typeof3.default) is not a function</code></p>
+
+<p>搞毛，我只是在源文件中使用了typeof，直接就报错了，一看还是babel-runtime的错误，好吧，上面说的问题还是要去解决，不能逃避。<br>于是乎，我开始了百度、谷歌…</p>
+<p>貌似也有人跟我一样的问题(<a href="https://github.com/webpack/webpack/issues/1694" target="_blank" rel="external">https://github.com/webpack/webpack/issues/1694</a>)<br>看里面的解决方法好像是装回babel5。</p>
+<hr>
+<p><span id="solution"></span></p>
+<h1 id="u89E3_u51B3_u65B9_u6CD5"><a href="#u89E3_u51B3_u65B9_u6CD5" class="headerlink" title="解决方法"></a>解决方法</h1><p><br>好吧，其实解决办法在这里(<a href="https://github.com/vuejs/vue-loader/issues/124" target="_blank" rel="external">https://github.com/vuejs/vue-loader/issues/124</a>)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">uninstall</span> babel-runtime</span><br><span class="line">npm <span class="keyword">install</span> babel-runtime@<span class="number">5</span> <span class="comment">--save-dev</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>这样子就安装了babel-runtime的5.8.3版本</strong></p>
+<p>最后跑出来的程序也不会报错了，其实说到底，只是一个babel-runtime包版本问题，想想刚出问题时候的烦躁，自己还是太年轻了…<br>问题的起源可能是babel6有BUG，不过博主什么都不懂，只会用。</p>
+<hr>
+<h1 id="u5728_u89E3_u51B3_u95EE_u9898_u7684_u8FC7_u7A0B_u4E2D_u6709_u4E2A_u63D2_u66F2_uFF1A"><a href="#u5728_u89E3_u51B3_u95EE_u9898_u7684_u8FC7_u7A0B_u4E2D_u6709_u4E2A_u63D2_u66F2_uFF1A" class="headerlink" title="在解决问题的过程中有个插曲："></a>在解决问题的过程中有个插曲：</h1><p>(<del>博主，你TM就是话多</del>)</p>
+<h2 id="u767E_u5EA6_u7ED3_u679C_3A"><a href="#u767E_u5EA6_u7ED3_u679C_3A" class="headerlink" title="百度结果:"></a>百度结果:</h2><img src="/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/baidu_result.png" alt="默默忧伤" title="默默忧伤">
+<hr>
+<p>似乎没有我想要的答案；搭了梯子，尝试了google…</p>
+<h2 id="u8C37_u6B4C_u7ED3_u679C_3A"><a href="#u8C37_u6B4C_u7ED3_u679C_3A" class="headerlink" title="谷歌结果:"></a>谷歌结果:</h2><p><br><br><img src="/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/google_result.png" alt="不明觉厉" title="不明觉厉"></p>
+<p>对此我只能：呵呵<img src="/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/hehebaidu.jpg" alt="百度广告才是王道" title="百度广告才是王道"></p>
+<hr>
+<p>总结：</p>
+<p>程序猿要<strong>用google 用google 用google！</strong> PS：普通程序员 + 谷歌 = 超级程序员 (反正不是我说的)</p>
 
       
     </div>
@@ -223,15 +252,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/01/05/Vue——利用webpack实现代码分割/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Vue——代码分割
-        
-      </div>
-    </a>
   
+    <a href="/2016/01/15/Vue—————使用vue-hot-load出现的publicPath问题小记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue——使用vue-hot-load出现的publicPath问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -269,7 +294,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015年总结" data-title="2015年总结" data-url="http://yoursite.com/2016/01/02/2015年总结/"></div>
+	<div class="ds-thread" data-thread-key="Vue——vue-loader使用过程出现的babel-runtime相关问题" data-title="Vue——vue-loader使用过程出现的babel-runtime相关问题" data-url="http://yoursite.com/2016/01/22/Vue——vue-loader使用过程出现的babel-runtime相关问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<style>
